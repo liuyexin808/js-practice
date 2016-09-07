@@ -1,1 +1,1 @@
-# js-practice
+# JS原生练习
