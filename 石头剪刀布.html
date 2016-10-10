@@ -54,7 +54,7 @@
 
 	<div id="game">
 		<img id="player" >
-		<span></span>
+		<span>V S</span>
 		<img id="computer" >
 	</div>
 <script type="text/javascript">
@@ -100,7 +100,7 @@
 		}
 	}
 	function changeImage() {
-		var index = 0;
+		var index = 0,
 		arr = [scissors,rock,paper];
 			return function () {
 				oply.src = arr[index];
@@ -112,7 +112,7 @@
 
 	$("img")[0].onclick = function() {
 		oply.src = scissors;
-		compare(scissors,com())
+		compare(scissors,com());
 		
 	};
 
@@ -125,9 +125,9 @@
 		oply.src = paper;
 		compare(paper,com());
 	};
-
-	var interval = setInterval(changeImage(),100)
-		
+	
+	var interval = setInterval(changeImage(),100);
+	
 </script>
 </body>
 </html>
