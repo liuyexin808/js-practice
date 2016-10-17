@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style type="text/css">
+    #outer {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        background-color: #b8af9e;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+    #outer div {
+        float: left;
+        width: 100px;
+        height: 100px;
+        margin:20px 0px 0px 20px;   
+        background-color: #ccc0b2;
+        text-align: center;
+        line-height: 100px;
+        font-size: 40px;
+        color: #776E65;
+        border-radius: 5px;
+    }
+    #outer .num_0   {
+        background-color: #ccc0b2;  
+    }
+    #outer .num_2 {
+        background-color: #E6E4D7;
+    }
+    #outer .num_4 {
+        background-color: #E5DFC7;
+    }
+    #outer .num_8 {
+        background-color: #F2B179;
+        color: #FFF7EB;
+    }
+    #outer .num_16{
+        background-color: #F59563; 
+        color: #FFF7EB;
+    }
+    #outer .num_32{
+        background-color: #F57C5F; 
+        color: #FFF7EB
+    }
+    #outer .num_64{
+        background-color: #F65D3B; 
+        color: #FFF7EB;
+    }
+    #outer .num_128{
+        background-color: #EDCE71;
+        color: #FFF7EB;
+    }
+    #outer .num_256{
+        background-color: #EDCD60; 
+        color: #FFF7EB;
+    }
+    #outer .num_512{
+        background-color: #ECC850; 
+        color: #FFF7EB;
+    }
+    #outer .num_1024{
+        background-color: #EDC53F; 
+        color: #FFF7EB;
+    }
+    #outer .num_2048{
+        background-color: #EEC22E;
+        color: #FFF7EB;
+    }
+    #outer .num_4096{
+        background-color: #0C0B09;
+        color: #FFF7EB 
+    }
+    #outer .num_8192{
+        background-color: #0C0B09;
+        color: #FFF7EB 
+    }
+       
+    </style>
+</head>
+<body>
+<div id="outer">
+	<div></div>
+	<div></div>
+	<div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<script type="text/javascript">
+var block =[];
+//获取方格
+function getBlock() {
+    var Block = document.getElementById("outer").getElementsByTagName('div')
+     for (var i = 0; i<Block.length;i=i+4) {
+        block.push([Block[i],Block[i+1],Block[i+2],Block[i+3]]);
+    }
+}
+// 随机格子
+function randomBlock() {
+    var index = Math.floor(Math.random()*block.length);
+    var num = block[index][index];
+    if(num.innerHTML !== "") {
+       return randomBlock();
+    }
+    if(Math.random()<0.9) {
+        render(num,2)
+    }  else {
+        render(num,4)
+    } 
+}
+// 控制方向
+function control(keyword) {
+    var l;
+    switch (keyword) {
+        //获取4X4方格，按右键，则已最右边一格为起点，向左进行相邻格子判断
+        //第一格判断一次，第二格判断两次，第三格判断三次，第四格不用判断
+        case 39: for(var i = 0; i < 4; i++){
+                    for(var j = 3;j >0 ; j--) {
+                       l = j;
+                       doFirst(block[i][l-1],block[i][l]);
+                       while(l != 4) {
+                        move(block[i][l-1],block[i][l]);
+                        l++
+                       }
+                    }  
+                 }
+                 randomBlock();
+                 break;
+        case 37: for(var i = 0; i < 4; i++) {
+                    for(var j = 0; j <3 ; j++) {
+                        l = j;
+                        doFirst(block[i][l+1],block[i][l])
+                        while(l != -1) {
+                        move(block[i][l+1],block[i][l])
+                        l--;
+                      }
+                    }
+                 }
+                 randomBlock();
+                 break;
+        case 40: for(var i = 0; i < 4 ; i++) {
+                    for(var j =3; j > 0; j-- ) {
+                        l = j;
+                        doFirst(block[l-1][i],block[l][i]);
+                        while(l != 4) {
+                        move(block[l-1][i],block[l][i])
+                        l++
+                        }
+                    }
+                 }
+                 randomBlock();
+                 break;
+        case 38: for(var i =0; i < 4; i++) {
+                    for(var j = 0; j < 3; j++) {
+                        l = j;
+                        doFirst(block[l+1][i],block[l][i]);
+                        while(l != -1) {
+                        move(block[l+1][i],block[l][i]);
+                        l--
+                        }
+                    }
+                 }
+                 randomBlock();
+                 break; 
+    }      
+}
+       
+
+//判断两个格子移动
+function move(pre,cur) {
+    if(pre.innerHTML != "" && cur.innerHTML == "") {
+        render(cur,pre.innerHTML);
+        render(pre,0);
+
+    }
+    if(pre.innerHTML != "" && cur.innerHTML != "") {
+            merge(pre,cur);
+    }
+   
+}
+
+//前后格子合并,并判断是否已经合并过
+function merge(pre,cur) {
+    if(pre.innerHTML == cur.innerHTML) {
+        if(pre.getAttribute("first") == "false") {
+        return;
+    }
+        render(cur,cur.innerHTML*2);
+        render(pre,0);
+        cur.setAttribute("first","false");
+    }
+}
+
+//刷新合并
+function doFirst(cur) {
+    if(cur.getAttribute("first") == "false") {
+        cur.setAttribute("first","true");
+    };
+}
+
+//渲染数字
+function render(cur,num) {
+    cur.className = "num_" + num;
+    
+    if(cur.className == "num_0") {
+        cur.innerHTML = "";
+    } else {
+        cur.innerHTML = num;
+    }
+    
+}
+
+//判断游戏结束
+function gameOver() {
+    for(var i = 0; i < 4; i++) {
+        for(var j = 0;j < 4 ; j++) {
+             if(block[i][j].innerHTML == "") {
+                return false;
+             }
+             if(j<3) {
+                if(block[i][j].innerHTML == block[i][j+1].innerHTML) {
+                    return false;
+                }
+             }
+             if(j<3) {
+                if(block[j][i].innerHTML == block[j+1][i].innerHTML) {
+                    return false;
+                }
+             }
+        } 
+    }
+    alert("游戏结束,请重新开始！")
+    location.reload();
+}
+
+//添加事件
+document.onkeydown = function(e) {
+    var e = e || document.event,
+        keyword = e.keyCode;
+    gameOver();
+    control(keyword);
+}
+
+//初始化
+function init() {
+    getBlock()
+    randomBlock()
+    randomBlock();
+}
+
+init();
+
+</script>
+</body>
+</html>
