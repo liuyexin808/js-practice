@@ -110,15 +110,22 @@ function getBlock() {
 }
 // 随机格子
 function randomBlock() {
-    var index = Math.floor(Math.random()*block.length);
-    var num = block[index][index];
-    if(num.innerHTML !== "") {
-       return randomBlock();
+    var arr = [],
+        num;
+    for (var i = 0;i < 4; i++) {
+        for (var j = 0;j < 4; j++) {
+            if(block[i][j].innerHTML == "") {
+                arr.push(block[i][j]);
+            }
+        }
     }
+
+    num = Math.floor(Math.random()*arr.length);
+
     if(Math.random()<0.9) {
-        render(num,2)
+        render(arr[num],2)
     }  else {
-        render(num,4)
+        render(arr[num],4)
     } 
 }
 // 控制方向
