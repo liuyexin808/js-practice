@@ -220,6 +220,10 @@ function doFirst(cur) {
 
 //渲染数字
 function render(cur,num) {
+	if(cur === undefined) {
+        return false;
+    }
+	
     cur.className = "num_" + num;
     
     if(cur.className == "num_0") {
