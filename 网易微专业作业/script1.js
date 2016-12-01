@@ -52,18 +52,20 @@ function serialize(data){
 
 function getAjax(url,data,callback){
     var xhr = new XMLHttpRequest();
-    xhr.onReadyStateChange = function() {
-        if(xhr.redayState === 4){
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4){
             if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                console.log(xhr.responseText);
                 callback(xhr.responseText);
             } else {
-                alert("request failed " + xhr.status);
+                console.log("request failed " + xhr.status);
             }
         }
     };
     xhr.open("get",url + "?" +serialize(data),true);
     xhr.send(null);
 }
+
 
 
 
@@ -88,6 +90,24 @@ function login() {
         oCancel = $(".cancel"),
         oBtn = $("#attention"),
         oNum = $(".num");
+    
+
+    function followSuccess() {
+        oBtn.disabled = true;
+        oCancel.style.display = "inline";
+        oBtn.className = "nofocus-btn";
+        oBtn.innerHTML = "√  已关注";
+        oNum.innerHTML = "粉丝46"; 
+    };
+    function followCancel() {
+        removeCookie("loginSuc");
+        removeCookie("followSuc");
+        oCancel.style.display = "none";
+        oBtn.disabled = false;
+        oBtn.className = "focus-btn";
+        oBtn.innerHTML = "+  关注";
+        oNum.innerHTML = "粉丝45"; 
+    };
 
     if(!getCookie("loginSuc")) {
         oBtn.onclick = function(){
@@ -97,33 +117,19 @@ function login() {
         followSuccess();
     }
 
-    function followSuccess() {
-        oBtn.disabled = true;
-        oBtn.className = "nofocus-btn";
-        oBtn.innerHTML = "√  已关注";
-        oCancel.style.display = "block";
-        oNum.innerHTML = "粉丝46"; 
-    };
-    function followCancel() {
-        removeCookie("loginSuc");
-        removeCookie("followSuc");
-        oBtn.disabled = false;
-        oBtn.className = "focus-btn";
-        oBtn.innerHTML = "+  关注";
-        oCancel.style.display = "none";
-        oNum.innerHTML = "粉丝45"; 
-    };
     oConfirm.onclick = function(){
-        var uVal = $('.username').value,
-            pVal = $('.password').value,
+        var uVal = hex_md5($('.username').value),
+            pVal = hex_md5($('.password').value),
             data = {userName:uVal, password:pVal};
         getAjax("http://study.163.com/webDev/login.htm",data,function(text1){
-            if(text1 === 1) {
+            if(text1 == 1) {
                 setCookie("loginSuc",1,1);
                 oBox.style.display = "none";
                 getAjax("http://study.163.com/webDev/attention.htm","",function(text2){
-                    if(text2 ===1) {setCookie("followSuc",1,1);loginSuccess();}
+                    if(text2 == 1) {setCookie("followSuc",1,1);followSuccess();}
                 })
+            } else {
+                alert("账号密码输入错误");
             } 
         })
     };
