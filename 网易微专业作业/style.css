@@ -70,6 +70,7 @@ a,a:hover{color:#333;} */
 
 .g-hd .f-nav .f-btn{ 
     display: inline-block;
+    font-size: 0;
 }
 
  .g-hd .f-nav .f-btn .focus-btn{
@@ -86,18 +87,23 @@ a,a:hover{color:#333;} */
     cursor: pointer;
 }
 .g-hd .f-nav .f-btn .nofocus-btn{
+    font-size: 12px;
+    line-height: 14px;    
     color: black;
-    background:#fff;
-    border: 1px solid #CECECE;
-    padding: 3.5px;
     width: 60px;
+    background:#f8f8f8;
+    border: 1px solid #CECECE;
+    padding: 3px;
+    cursor:default;
 }
 .g-hd .f-nav .f-btn .cancel{
-    height: 22px;
+    font-size: 12px;
     width: 20px;
-    border: 1px solid #CECECE;
-    padding: 3.5px;
     color: #CECECE;
+    background: #f8f8f8;
+    border: 1px solid #CECECE;
+    border-left-style: none;
+    padding: 3px;
 }
 .g-hd .f-nav .f-btn .cancel:hover{
     text-decoration: underline;
@@ -243,15 +249,181 @@ a,a:hover{color:#333;} */
 .g-bd .container a:hover{
     text-decoration: underline;
 }
+
+.g-bd .c-wrap {
+    width: 100%;
+    height:100%;
+    background-color:#F8F8F8;
+}
+
 .g-bd .picture{
     width: 1615px;
     margin:0 auto;
+    
 }
 .g-bd .content{
-    width: 1205px;
+    width: 1220px;
     height: 1550px;
     margin: 0 auto;
+    padding-top:80px;
 }
+.g-bd .content .left {
+    display: inline-block;
+    height: 1400px;
+    width: 980px;
+}
+.g-bd .content .left .tab{
+    font-size: 0;
+    margin-left: 10px;
+}
+.g-bd .content .tab .btn{
+    display: inline-block;
+    height: 50px;
+    width: 200px;
+    text-align:center;
+    font: 18px/50px "微软雅黑";
+    background-color: #fff;
+    cursor: pointer;
+    border: 0;
+}
+.g-bd .content .tab .active {
+    color: #fff;
+    background-color: #39A030;
+}
+.g-bd .content .left .ctn {
+    width: 100%;
+    height: 100%;
+    margin-top:20px;
+}
+.g-bd .content .ctn .item{
+    position: relative;
+    float: left;
+    width: 225px;
+    height: 225px;
+    margin:10px; 
+    background:#fff; 
+    box-shadow:0 2px 2px 2px #e6e6e6;
+}
+.g-bd .content .ctn img {
+    width: 225px;
+    margin: 1px;
+}
+ .g-bd .content .ctn p{
+    margin:6px 0 0 5px;
+}
+.g-bd .content .ctn .i-name {
+    font: bold 12px/16px "微软雅黑";
+    margin-top:0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+} 
+.g-bd .content .ctn .i-provider {
+    font: 12px/16px "微软雅黑";
+    color: #999999;
+}
+.g-bd .content .ctn .i-count {
+    display: inline-block;
+    background: url(images/person.png) no-repeat left center;
+    padding:3px 2px 2px 14px;
+    color: #8e938d;
+    border: 0.5px solid #dae0d9;
+    border-radius: 2px;
+}
+.g-bd .content .ctn .i-price{
+    font:bold 12px/12px "微软雅黑";
+    color:#ff3f00;
+}
+.g-bd .content .ctn .item a {
+    display: none;
+}
+.g-bd .content .ctn .item:hover a {
+    display: block;
+    position: absolute;
+    top: -10px;
+    left:-10px;
+    width: 460px;
+    background-color: #fff;
+    padding: 10px;
+    min-height: 225px;
+    box-shadow:0 2px 2px 2px #e6e6e6;
+    z-index: 999;
+}
+
+.g-bd .content .ctn a img{
+    float: left;
+    margin-right: 15px;
+}
+.g-bd .content .ctn a p {
+    margin:0;
+}
+.g-bd .content .ctn a .name {
+    font: bold 18px/24px "微软雅黑";
+}
+.g-bd .content .ctn a .count {
+    display: inline-block;
+    background: url(images/person.png) no-repeat left center;
+    padding:1px 2px 2px 14px;
+    margin: 12px 0;
+}
+
+.g-bd .content .ctn a .provider {
+    margin-bottom: 6px;
+}
+.g-bd .content .ctn a .description{
+    clear: both;
+    font: 14px/24px "微软雅黑";
+    padding: 20px 0 0 20px;
+}
+
+.g-bd .content .right div{
+    box-shadow:0 2px 2px 2px #e6e6e6;
+}
+
+.g-bd .content .right {
+    float: right;
+}
+.g-bd .content .right h2{
+    width: 225px;
+    height: 55px;
+    background:#fff;
+    font:16px/55px "微软雅黑";
+    padding-left: 10px;
+}
+.g-bd .content .video .v-cnt {
+    width: 100%;
+    height: 170px;
+    margin-top:2px;
+    background:#fff;
+
+}
+.g-bd .content .video .v-cnt p {
+    padding:20px 0 0 20px;
+
+}
+.g-bd .content .video .v-cnt img {
+   margin-right: 30px;
+   cursor: pointer;
+}
+
+.g-bd .content .video .size {
+    width: 955px;
+    height: 680px;
+    text-align: center;
+}
+.g-bd .content .video h2 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+.g-bd .content .video img{
+    margin:5px 5px 0 0;
+    float: right;
+}
+
+.g-bd .content .right .list {
+    margin-top:15px;
+}
+
 .g-ft {
     width: 100%;
     height: 260px;

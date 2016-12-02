@@ -1,3 +1,5 @@
+"use strict"
+
 function $(el) {
 	return document.querySelector(el);
 }
@@ -55,7 +57,6 @@ function getAjax(url,data,callback){
     xhr.onreadystatechange = function() {
         if(xhr.readyState == 4){
             if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-                console.log(xhr.responseText);
                 callback(xhr.responseText);
             } else {
                 console.log("request failed " + xhr.status);
@@ -84,13 +85,9 @@ function closeTip() {
 closeTip();
 
 function login() {
-    var oBox = $(".modal"),
-        oClose = $(".close"),
-        oConfirm = $(".confirm"),
-        oCancel = $(".cancel"),
-        oBtn = $("#attention"),
-        oNum = $(".num");
-    
+    var oBox = $(".f-nav .modal"),oClose = $(".close"),oConfirm = $(".confirm"),
+        oCancel = $(".cancel"),oBtn = $("#attention"),oNum = $(".num"),
+        user = $(".username"),word = $(".password");
 
     function followSuccess() {
         oBtn.disabled = true;
@@ -111,6 +108,8 @@ function login() {
 
     if(!getCookie("loginSuc")) {
         oBtn.onclick = function(){
+            user.value = "";
+            word.value = ""
             oBox.style.display = "block";
         }
     } else {
@@ -118,8 +117,8 @@ function login() {
     }
 
     oConfirm.onclick = function(){
-        var uVal = hex_md5($('.username').value),
-            pVal = hex_md5($('.password').value),
+        var uVal = hex_md5(user.value),
+            pVal = hex_md5(word.value),
             data = {userName:uVal, password:pVal};
         getAjax("http://study.163.com/webDev/login.htm",data,function(text1){
             if(text1 == 1) {
@@ -141,4 +140,67 @@ function login() {
     }
 }
 login();
+
+
+
+function getContent(options,name) {
+    var oid = $("."+name);
+    getAjax("http://study.163.com/webDev/couresByCategory.htm",options[name],function(text){
+        var data = JSON.parse(text),template = "",
+            data = data.list;
+        data.forEach(function(item){
+            var oImg = "<img src="+item.middlePhotoUrl+">";
+            template +="<div class='item'>"+oImg+"<p class='i-name'>"+item.name+"</p><p class='i-provider'>"+item.provider
+            +"</p><p class='i-count'>"+item.learnerCount+"</p><p class='i-price'>￥"+item.price+"</p><a>" + oImg +"<p class='name'>"+item.name+"</p>"
+            +"<p class='count'>"+item.learnerCount+"人在学</p>"+"<p class='provider'>发布者:" + item.provider+"</p>"+"<p class='category'>分类:无</p>"+
+            "<p class='description'>"+item.description +"</p></a></div>" 
+        })
+        oid.innerHTML = template;
+    })
+}
+
+
+var options = {
+    program:{
+        pageNo:2,
+        psize:20,
+        type:20,
+    },
+    product:{
+        pageNo:1,
+        psize:20,
+        type:10,
+    }
+}
+
+
+function init() {
+    var bPct = $("#product"),
+        oPct = $(".product"),
+        bPgm = $("#program"),
+        oPgm = $(".program");
+
+
+    bPct.onclick = function(){
+        oPct.style.display = "block";
+        oPgm.style.display = "none";
+        this.className += " active";
+        this.disabled = true;
+        bPgm.className = "btn";
+        bPgm.disabled = false;
+    }
+    bPgm.onclick = function(){
+        oPgm.style.display ="block";
+        oPct.style.display = "none";
+        this.className += " active";
+        this.disabled = true;
+        bPct.className = "btn";
+        bPct.disabled = false;
+    }
+    getContent(options,"product");
+    getContent(options,"program");
+    $(".program").style.display ="none";
+}
+init();
+
 
