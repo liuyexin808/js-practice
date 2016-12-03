@@ -3,12 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <title>网易教育产品部</title>
-<meta name="keywords" content=""/>
-<meta name="description" content=""/>
 <meta name="viewport" content="width=device-width"/>
 <link rel="stylesheet" href="./style.css"/>
-<!-- <link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="apple-touch-icon" href="img/touchicon.png"/> -->
+<link rel="shortcut icon" href="images/icon-1.png"/>
 </head>
 <body>
       
@@ -22,7 +19,7 @@
     网易云课堂微专业,帮助你掌握专业技能,令你求职或加薪多一份独特优势!
     <a href="http://study.163.com/smartSpec/intro.htm#/smartSpecIntro" target="_blank">立即查看></a>
     </p>
-    <p class="tip-close">X 不再提醒</p>
+    <p class="tip-close">不再提醒</p>
     </div>
 
   </div> 
@@ -76,8 +73,15 @@
   <!-- 页面主体 -->
   <div class="g-bd">
       <!-- 轮播图 -->
-      <div class="banner">
-        <img src="images/banner1.jpg">
+      <div class="slider">
+        <a  id="s-slide" href="" target="_blank">
+          <img src="">
+        </a>
+        <ul>
+          <li class="s-control"></li>
+          <li class="s-control"></li>
+          <li class="s-control"></li>
+        </ul>
       </div>
         
       <div class="container clearfix" >
@@ -108,6 +112,7 @@
               <a href="http://www.icourse163.org/" target="_blank">了解更多 ></a>
             </div>
           </div>
+
       </div>
       
       <div class="c-wrap">
@@ -121,37 +126,75 @@
         </div>
       
         <div class="content">
+
           <div class="left">
+
               <div class="tab">
                 <button class="btn active" id="product" disabled="">产品设计</button>
                 <button class="btn" id="program">编程语言</button>
               </div>
+
               <div class="ctn">
                 <div class="product" ></div>
                 <div class="program" ></div>
               </div>
-              <div class="pages"></div>
+
+              <div class="pages clearfix">
+                <ul>
+                  <li class="p-left"></li>
+                  <li>1</li>
+                  <li class="p-active">2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li class="p-right"></li>
+                </ul>
+              </div>
+
           </div>
+
           <div class="right ">
+
             <div class="video">
+
               <h2>机构介绍</h2>
               <div class="v-cnt"> 
                 <p>观看下面的视频来了解吧</p>
-                <img src="images/video.jpg">
+                <img id="vd-btn" src="images/video.jpg">
               </div>
+
               <div class='modal' style="display:none">
                 <div class='modal_wrap size'>
-                  <img src="images/X.png">
-                  <h2>请观看下面的视频</h3>
-                  <video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls="control" width="880" height="505"></video>
+                  <img id="vd-close" src="images/X.png" style="cursor: pointer">
+                  <h2>请观看下面的视频</h2>
+                  <video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls="control" width="880" height="505">
+                  </video>
                 </div>
               </div>
+
             </div>
+
             <div class="list">
-              <h2>最热胖行</h2>
-              <div class="l-cnt"></div>
+
+              <h2>最热排行</h2>
+
+              <div class="l-cnt">
+
+                <div class="l-wrap">
+
+                  <!-- <a> </a> -->
+
+                </div>
+
+              </div>
+
             </div>
+
           </div>
+
         </div>
 
      </div>
@@ -164,24 +207,24 @@
 
           <div class="content">
               <h2>网易教育产品部</h2>
-              <p>©2014 icourse163.org 浙ICP备08114786号-1
-               icourses.cn 京ICP备12020869</p>
+              <p>©2014 icourse163.org 浙ICP备08114786号-1<br> icourses.cn 京ICP备12020869 京公网安备110102000459-2</p>
           </div>
 
           <div class="link">
 
               <div class="link-team">
                 <p>友情链接:</p>
-                <a href="" target="_blank">网易公开课</a>
-                <a href="" target="_blank">网易云课堂</a>
-                <a href="" target="_blank">中国大学MOOC</a>
+                <a href="http://open.163.com/" target="_blank">网易公开课</a>
+                <a href="http://study.163.com/" target="_blank">网易云课堂</a>
+                <a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a>
               </div>
 
               <div class="link-team">
                 <p>我们:</p>
                 <a href="" target="_blank">关于</a>
                 <a href="" target="_blank">联系</a>
-                <a href="" target="_blank">关注<div class="weibo"></div></a>
+                <a href="" target="_blank" class="f-icon">关注</a>
+                
               </div>
               
               <div class="link-team">

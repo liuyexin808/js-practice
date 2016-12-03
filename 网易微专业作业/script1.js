@@ -11,26 +11,20 @@ function $$(el) {
 
 function setCookie(name, value, Day) {
     var oDate=new Date();
-     
     oDate.setDate(oDate.getDate()+Day);
-     
     document.cookie=name+'='+encodeURIComponent(value)+';expires='+oDate;
 }
  
 function getCookie(name){
     var arr=document.cookie.split('; ');
-
     for(var i=0;i<arr.length;i++){
-        //arr2->['username', 'abc']
         var arr2=arr[i].split('=');
-         
         if(arr2[0]==name)
         {  
             var getC = decodeURIComponent(arr2[1]);
             return getC;
         }
     }
-     
     return '';
 }
  
@@ -60,6 +54,9 @@ function getAjax(url,data,callback){
                 callback(xhr.responseText);
             } else {
                 console.log("request failed " + xhr.status);
+                if(xhr.status == 0) {
+                    getAjax(url,data,callback);
+                }
             }
         }
     };
@@ -82,7 +79,7 @@ function closeTip() {
 		})
 	}
 }
-closeTip();
+
 
 function login() {
     var oBox = $(".f-nav .modal"),oClose = $(".close"),oConfirm = $(".confirm"),
@@ -139,8 +136,57 @@ function login() {
         oBox.style.display = "none";
     }
 }
-login();
 
+
+function carousel() {
+    var oSlider = $("#s-slide"),
+        oImg = $("#s-slide img"),
+        srcData=["http://open.163.com/","http://study.163.com/","http://www.icourse163.org/"],
+        imgData=["images/banner1.jpg","images/banner2.jpg","images/banner3.jpg"],
+        oBtn = [].slice.apply($$(".s-control")),
+        oIndex = -1,timer = null;
+    function slide(index){
+        oImg.className = "fadeout"
+        oSlider.href = srcData[index];
+        oImg.src = imgData[index];
+        oBtn.forEach(function(item){
+            item.style.background = "#fff";
+        })
+        oIndex = index;
+        setTimeout(function(){
+            oImg.className = "fadein"
+            oBtn[index].style.background = "#000";
+        },50)
+    }
+
+    function autoSlide() {
+       timer = setInterval(function(){
+        oIndex = (oIndex+1) % 3;
+        slide(oIndex);
+       },5000)
+    }
+    oBtn.forEach(function(item,index){
+        item.onclick = function(){slide(index)};
+    });
+    oSlider.onmouseover = function(){clearInterval(timer)}
+    oSlider.onmouseout = function(){autoSlide()}
+    autoSlide();
+    slide(0);
+}
+
+ 
+var options = {
+    program:{
+        pageNo:2,
+        psize:20,
+        type:20,
+    },
+    product:{
+        pageNo:1,
+        psize:20,
+        type:10,
+    }
+}
 
 
 function getContent(options,name) {
@@ -159,28 +205,46 @@ function getContent(options,name) {
     })
 }
 
+function getList(){
+    getAjax("http://study.163.com/webDev/hotcouresByCategory.htm","",function(text){
+        var data = JSON.parse(text),template="";
+        data.forEach(function(item){
+            template += "<a class='l-item'><img src=" + item.smallPhotoUrl +
+            "><p class='l-name'>" + item.name + "</p><p class='l-count'>"+item.learnerCount+"</p></a>";
+        })
+        $(".l-wrap").innerHTML = template; 
+    })
+}
 
-var options = {
-    program:{
-        pageNo:2,
-        psize:20,
-        type:20,
-    },
-    product:{
-        pageNo:1,
-        psize:20,
-        type:10,
+function rollList() {
+    var oWrap = $(".l-wrap"),timer = null,oTop = 0;
+    timer = setInterval(function(){
+        if(oTop == -700) oTop = 70;
+        oTop += -70;
+        oWrap.style.top = oTop +"px";
+    },5000)
+}
+
+function videoHandler() {
+    var btn = $("#vd-btn"),
+        close = $("#vd-close"),  
+        wrap = $(".video .modal"),
+        video = $("video");
+    btn.onclick = function() {
+        wrap.style.display = "block";
+    };
+    close.onclick= function() {
+        wrap.style.display = "none";
+        video.pause();
     }
 }
 
-
-function init() {
-    var bPct = $("#product"),
+function courseHandler() {
+     var bPct = $("#product"),
         oPct = $(".product"),
         bPgm = $("#program"),
         oPgm = $(".program");
-
-
+    $(".program").style.display ="none";
     bPct.onclick = function(){
         oPct.style.display = "block";
         oPgm.style.display = "none";
@@ -197,10 +261,21 @@ function init() {
         bPct.className = "btn";
         bPct.disabled = false;
     }
+}
+
+
+function init() {
+    closeTip();
+    login();
+    carousel();
     getContent(options,"product");
     getContent(options,"program");
-    $(".program").style.display ="none";
+    courseHandler()
+    videoHandler();
+    getList();
+    rollList();
 }
+
 init();
 
 
