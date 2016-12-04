@@ -3,48 +3,43 @@
 <head>
 <meta charset="utf-8"/>
 <title>网易教育产品部</title>
-<meta name="keywords" content=""/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width"/>
-<link rel="stylesheet" href="./style.css"/>
-<!-- <link rel="shortcut icon" href="img/favicon.ico"/>
-<link rel="apple-touch-icon" href="img/touchicon.png"/> -->
+<link rel="stylesheet" href="CSS/reset.css"/>
+<link rel="stylesheet" href="CSS/style.css"/>
+<link rel="shortcut icon" href="images/icon-1.png"/>
 </head>
 <body>
       
-  <!-- 头部 -->
- <div class="g-hd">
+  <!-- 页面头部 -->
+  <div class="g-hd">
   <!-- 提示消息 -->
-  <div class="tip">
+    <div class="tip">
 
-    <div class="container">
-    <p class="tip-text">
-    网易云课堂微专业,帮助你掌握专业技能,令你求职或加薪多一份独特优势!
-    <a href="http://study.163.com/smartSpec/intro.htm#/smartSpecIntro" target="_blank">立即查看></a>
-    </p>
-    <p class="tip-close">X 不再提醒</p>
-    </div>
+      <div class="container">
+      <p class="tip-text">
+      网易云课堂微专业,帮助你掌握专业技能,令你求职或加薪多一份独特优势!
+      <a href="http://study.163.com/smartSpec/intro.htm#/smartSpecIntro" target="_blank">立即查看></a>
+      </p>
+      <p class="tip-close">不再提醒</p>
+      </div>
 
-  </div> 
-
-     
+    </div> 
 
 
-  <!-- 导航栏 -->
-  <div class="f-nav">
-
+    <!-- 导航栏 -->
+    <div class="f-nav">
+      <!-- Logo -->
       <div class="f-log">
         <h2 >网易教育产品部</h2>
       </div>
       
-      
-
+      <!-- 关注按钮 -->
       <div class="f-btn">
         <button class="focus-btn" id="attention" >+   关注</button>
-        <a href="" class="cancel" style="display:none">取消</a>
+        <a href="" class="cancel" style="display:none" >取消</a>
         <span class="num">粉丝45</span>
        </div>
 
+      <!-- 登录框 -->
       <div class='modal' style="display:none" >
         <div class='modal_wrap'>
             <div class='modal_head'>
@@ -52,9 +47,9 @@
               <span>登陆网易云课堂</span>
             </div>
             <div class='modal_body'>
-              <input type="text"  placeholder=" 账号" class="username">
-              <input type="password"  placeholder=" 密码"
-              class="password">
+              <input type="text"  placeholder=" 账号:studyOnline" class="username" >
+              <input type="password"  placeholder=" 密码:study.163.com"
+              class="password" >
             </div>
             <div class='modal_foot'>
               <div class="confirm">登陆</div>
@@ -62,24 +57,35 @@
         </div>
       </div>
 
-
+      <!-- 右侧导航链接 -->
       <div class="f-bav ">
         <a href="http://open.163.com/" target="_blank">网易公开课</a>
         <a href="http://study.163.com/" target="_blank">云课堂</a>
         <a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a>
         <a class="search"></a>
-      </div> 
+      </div>
 
     </div>
 
   </div>
+
+
+
   <!-- 页面主体 -->
   <div class="g-bd">
       <!-- 轮播图 -->
-      <div class="banner">
-        <img src="images/banner1.jpg">
+      <div class="slider">
+        <a  id="s-slide" href="" target="_blank">
+          <img src="">
+        </a>
+        <!-- 控制按钮 -->
+        <ul>
+          <li class="s-control"></li>
+          <li class="s-control"></li>
+          <li class="s-control"></li>
+        </ul>
       </div>
-        
+      <!-- 了解更多 -->
       <div class="container clearfix" >
         
           <div class="wrap">
@@ -108,48 +114,122 @@
               <a href="http://www.icourse163.org/" target="_blank">了解更多 ></a>
             </div>
           </div>
-      </div>
-      
-    <div class="picture">
-        <img src="images/workspace1.jpg">
-        <img src="images/workspace2.jpg">
-        <img src="images/workspace3.jpg">
-        <img src="images/workspace4.jpg">
-        <img src="images/workspace5.jpg">
-      </div>
-      
-      <div class="content">
-        
-      </div>
 
-    </div>
+      </div>
+      <!-- 灰色背景 -->
+      <div class="c-wrap">
+        <!-- 图片展示 -->
+        <div class="picture">
+          <img src="images/workspace1.jpg">
+          <img src="images/workspace2.jpg">
+          <img src="images/workspace3.jpg">
+          <img src="images/workspace4.jpg">
+          <img src="images/workspace5.jpg">
+        </div>
+        <!-- 内容区域 -->
+        <div class="content">
+          <!-- 左侧内容 -->
+          <div class="left">
+              <!-- 课程标签 -->
+              <div class="tab">
+                <button class="btn active" id="product" disabled="">产品设计</button>
+                <button class="btn" id="program">编程语言</button>
+              </div>
+              <!-- 课程内容 -->
+              <div class="ctn">
+                <div class="product" ></div>
+                <div class="program" ></div>
+              </div>
+              <!-- 页数按钮 -->
+              <div class="pages">
+                <ul>
+                  <li class="p-left"></li>
+                  <li>1</li>
+                  <li class="p-active">2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li class="p-right"></li>
+                </ul>
+              </div>
+
+          </div>
+          <!-- 右侧内容 -->
+          <div class="right ">
+            <!-- <视频内容 -->
+            <div class="video">
+
+              <h2>机构介绍</h2>
+              <div class="v-cnt"> 
+                <p>观看下面的视频来了解吧</p>
+                <img id="vd-btn" src="images/video.jpg">
+              </div>
+              <!-- 观看视频界面 -->
+              <div class='modal' style="display:none">
+                <div class='modal_wrap size'>
+                  <img id="vd-close" src="images/X.png" style="cursor: pointer">
+                  <h2>请观看下面的视频</h2>
+                  <video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls="control" width="880" height="505">
+                  </video>
+                </div>
+              </div>
+
+            </div>
+            <!-- 最热排行内容 -->
+            <div class="list">
+
+              <h2>最热排行</h2>
+
+              <div class="l-cnt">
+
+                <div class="l-wrap">
+
+                  <!-- <a> </a> -->
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+     </div>
 
   </div>
 
+
+  
+  <!-- 页脚 -->
   <div class="g-ft">
-
+      
       <div class="container">
-
+          <!-- 内容区域 -->
           <div class="content">
               <h2>网易教育产品部</h2>
-              <p>©2014 icourse163.org 浙ICP备08114786号-1
-               icourses.cn 京ICP备12020869</p>
+              <p>©2014 icourse163.org 浙ICP备08114786号-1<br> icourses.cn 京ICP备12020869 京公网安备110102000459-2</p>
           </div>
 
           <div class="link">
 
               <div class="link-team">
                 <p>友情链接:</p>
-                <a href="" target="_blank">网易公开课</a>
-                <a href="" target="_blank">网易云课堂</a>
-                <a href="" target="_blank">中国大学MOOC</a>
+                <a href="http://open.163.com/" target="_blank">网易公开课</a>
+                <a href="http://study.163.com/" target="_blank">网易云课堂</a>
+                <a href="http://www.icourse163.org/" target="_blank">中国大学MOOC</a>
               </div>
 
               <div class="link-team">
                 <p>我们:</p>
                 <a href="" target="_blank">关于</a>
                 <a href="" target="_blank">联系</a>
-                <a href="" target="_blank">关注<div class="weibo"></div></a>
+                <a href="" target="_blank" class="f-icon">关注</a>
+                
               </div>
               
               <div class="link-team">
@@ -167,8 +247,8 @@
 
 
 
-
- <script src="./script7.js"></script>
+  <script src="JS/md5.js"></script>
+ <script src="JS/script.js"></script>
 
 </body>
-</htm
+</html>
