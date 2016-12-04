@@ -1,25 +1,4 @@
-/* reset */
-html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
-g-hd,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
-table{border-collapse:collapse;border-spacing:0;}
-html,body,fieldset,img,iframe,abbr{border:0;}
-i,cite,em,var,address,dfn{font-style:normal;}
-[hidefocus],summary{outline:0;}
-li{list-style:none;}
-h1,h2,h3,h4,h5,h6,small{font-size:100%;}
-sup,sub{font-size:83%;}
-pre,code,kbd,samp{font-family:inherit;}
-q:before,q:after{content:none;}
-textarea{overflow:auto;resize:none;}
-label,summary{cursor:default;}
-a,button{cursor:pointer;}
-h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
-del,ins,u,s,a,a:hover{text-decoration:none;}
-body,textarea,input,button,select,keygen,legend{font:12px/1.14  "Arial","Hiragino Sans GB","Microsoft YaHei", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";color:#333;outline:0;}
-body{background:#fff;}
-a,a:hover{color:#333;} */
-@media screen and(min-width:1205) {
-}
+
 
 .clearfix:after {
     content: ".";display: block;clear: both;height: 0;
@@ -46,7 +25,7 @@ a,a:hover{color:#333;} */
 }
 .g-hd .tip .tip-close{
     float: right;
-    background: url("images/xx.png") no-repeat left;
+    background: url("../images/xx.png") no-repeat left;
     padding-left: 15px;
 	cursor: pointer;
 }
@@ -66,7 +45,7 @@ a,a:hover{color:#333;} */
  	padding-left: 80px;
     width: 160px;
  	height: 24px;
- 	background:url(images/logo.png)  no-repeat left center;
+ 	background:url(../images/logo.png)  no-repeat left center;
  	font-size: 20px;
 } 
 
@@ -136,7 +115,7 @@ a,a:hover{color:#333;} */
     height: 18px;
     margin-top:5px;
     margin-right: 0px;
-    background-image: url(images/search.png);
+    background-image: url(../images/search.png);
 }
 
 .modal{
@@ -164,7 +143,7 @@ a,a:hover{color:#333;} */
     width: 20px;
     height: 20px;
     margin-left:365px;
-    background: url("images/X.png") no-repeat right;
+    background: url("../images/X.png") no-repeat right;
     cursor: pointer;
 }
 .modal .modal_wrap span {
@@ -192,7 +171,7 @@ a,a:hover{color:#333;} */
     font:16px/45px '微软雅黑';
     margin-left: 40px;
     color: #fff;
-    background: url(images/login.png) no-repeat;
+    background: url(../images/login.png) no-repeat;
     text-align: center;
     cursor: pointer;
 }
@@ -248,13 +227,13 @@ a,a:hover{color:#333;} */
 }
 
 .g-bd .container .icon-1{
-    background: url(images/mooc.png);
+    background: url(../images/mooc.png);
 }
 .g-bd .container .icon-2{
-    background: url(images/classroom.png);
+    background: url(../images/classroom.png);
 }
 .g-bd .container .icon-3{
-    background: url(images/open.png);
+    background: url(../images/open.png);
 }
 .g-bd .container .item {
     width: 240px;
@@ -350,7 +329,7 @@ a,a:hover{color:#333;} */
 }
 .g-bd .content .ctn .i-count {
     display: inline-block;
-    background: url(images/person.png) no-repeat left center;
+    background: url(../images/person.png) no-repeat left center;
     padding:3px 2px 2px 14px;
     color: #8e938d;
     border: 0.5px solid #dae0d9;
@@ -388,7 +367,7 @@ a,a:hover{color:#333;} */
 }
 .g-bd .content  .ctn a .count {
     display: inline-block;
-    background: url(images/person.png) no-repeat left center;
+    background: url(../images/person.png) no-repeat left center;
     padding:1px 2px 2px 14px;
     margin: 12px 0;
 }
@@ -406,12 +385,12 @@ a,a:hover{color:#333;} */
 .g-bd .content .pages .p-left{
     width: 30px;
     height: 20px;
-    background: #9DD8B1 url("images/left.png") no-repeat center;
+    background: #9DD8B1 url("../images/left.png") no-repeat center;
 }
 .g-bd .content .pages .p-right{
     width: 30px;
     height: 20px;
-    background: #9DD8B1 url("images/right.png") no-repeat center;
+    background: #9DD8B1 url("../images/right.png") no-repeat center;
 }
 .g-bd .content .pages li{
     float: left;
@@ -513,7 +492,7 @@ a,a:hover{color:#333;} */
     text-overflow:ellipsis;
 }
 .g-bd .content .right .l-item .l-count {
-    background: url(images/person.png) no-repeat left center;
+    background: url(../images/person.png) no-repeat left center;
     margin-top: 10px;
     padding-left:15px;
     color: #8e938d;
@@ -540,7 +519,7 @@ a,a:hover{color:#333;} */
 }
 .g-ft .container .content h2{
     color: #39a030;
-    background:url(images/logo.png)  no-repeat left center;
+    background:url(../images/logo.png)  no-repeat left center;
     height: 26px;
     font: 20px "Microsoft YaHei";
     padding-left:80px;
@@ -552,7 +531,7 @@ a,a:hover{color:#333;} */
 .g-ft .container .f-icon {
     width: 55px;
     height: 40px;
-    background: url("images/weibo.png") no-repeat right top;
+    background: url("../images/weibo.png") no-repeat right top;
 }
 .g-ft .container .link {
     float: left;

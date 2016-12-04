@@ -8,13 +8,13 @@ function $$(el) {
 	return document.querySelectorAll(el);
 }
 
-
+//设置Cookie
 function setCookie(name, value, Day) {
     var oDate=new Date();
     oDate.setDate(oDate.getDate()+Day);
     document.cookie=name+'='+encodeURIComponent(value)+';expires='+oDate;
 }
- 
+//获取Cookie
 function getCookie(name){
     var arr=document.cookie.split('; ');
     for(var i=0;i<arr.length;i++){
@@ -27,11 +27,11 @@ function getCookie(name){
     }
     return '';
 }
- 
+//移除Cookie
 function removeCookie(name){
     setCookie(name, '1', -1);
 }
-
+//参数序列化
 function serialize(data){
     var name,value,pair=[];
     if(!data) return "";
@@ -45,7 +45,7 @@ function serialize(data){
     }
     return pair.join("&");
 }
-
+//AJAX GET类型
 function getAjax(url,data,callback){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -64,9 +64,7 @@ function getAjax(url,data,callback){
     xhr.send(null);
 }
 
-
-
-
+//关闭提示框,并设置Cookie
 function closeTip() {
 	var oTip = $(".tip"),
 		oTc = $(".tip-close");
@@ -80,12 +78,12 @@ function closeTip() {
 	}
 }
 
-
+//点击关注,弹出登录框,验证用户名
 function login() {
     var oBox = $(".f-nav .modal"),oClose = $(".close"),oConfirm = $(".confirm"),
         oCancel = $(".cancel"),oBtn = $("#attention"),oNum = $(".num"),
         user = $(".username"),word = $(".password");
-
+    //登陆成功后,关注效果
     function followSuccess() {
         oBtn.disabled = true;
         oCancel.style.display = "inline";
@@ -93,6 +91,7 @@ function login() {
         oBtn.innerHTML = "√  已关注";
         oNum.innerHTML = "粉丝46"; 
     };
+    //关注取消效果,并移除Cookie
     function followCancel() {
         removeCookie("loginSuc");
         removeCookie("followSuc");
@@ -102,17 +101,17 @@ function login() {
         oBtn.innerHTML = "+  关注";
         oNum.innerHTML = "粉丝45"; 
     };
-
+    //刷新页面检查是否有登陆Cookie
     if(!getCookie("loginSuc")) {
         oBtn.onclick = function(){
             user.value = "";
-            word.value = ""
+            word.value = "";
             oBox.style.display = "block";
         }
     } else {
         followSuccess();
     }
-
+    //点击登陆按钮验证用户名，并设置Cookie
     oConfirm.onclick = function(){
         var uVal = hex_md5(user.value),
             pVal = hex_md5(word.value),
@@ -137,7 +136,7 @@ function login() {
     }
 }
 
-
+//轮播图
 function carousel() {
     var oSlider = $("#s-slide"),
         oImg = $("#s-slide img"),
@@ -145,6 +144,7 @@ function carousel() {
         imgData=["images/banner1.jpg","images/banner2.jpg","images/banner3.jpg"],
         oBtn = [].slice.apply($$(".s-control")),
         oIndex = -1,timer = null;
+    //淡入效果
     function slide(index){
         oImg.className = "fadeout"
         oSlider.href = srcData[index];
@@ -158,13 +158,14 @@ function carousel() {
             oBtn[index].style.background = "#000";
         },50)
     }
-
+    //自动轮播
     function autoSlide() {
-       timer = setInterval(function(){
+        timer = setInterval(function(){
         oIndex = (oIndex+1) % 3;
         slide(oIndex);
        },5000)
     }
+    //绑定点击控制按钮
     oBtn.forEach(function(item,index){
         item.onclick = function(){slide(index)};
     });
@@ -174,7 +175,7 @@ function carousel() {
     slide(0);
 }
 
- 
+//获取课程的参数列表
 var options = {
     program:{
         pageNo:2,
@@ -188,7 +189,7 @@ var options = {
     }
 }
 
-
+//获取课堂模板
 function getContent(options,name) {
     var oid = $("."+name);
     getAjax("http://study.163.com/webDev/couresByCategory.htm",options[name],function(text){
@@ -204,7 +205,7 @@ function getContent(options,name) {
         oid.innerHTML = template;
     })
 }
-
+//获取最热排行模板
 function getList(){
     getAjax("http://study.163.com/webDev/hotcouresByCategory.htm","",function(text){
         var data = JSON.parse(text),template="";
@@ -215,7 +216,7 @@ function getList(){
         $(".l-wrap").innerHTML = template; 
     })
 }
-
+//每5秒滚动
 function rollList() {
     var oWrap = $(".l-wrap"),timer = null,oTop = 0;
     timer = setInterval(function(){
@@ -225,6 +226,7 @@ function rollList() {
     },5000)
 }
 
+//点击视频事件处理
 function videoHandler() {
     var btn = $("#vd-btn"),
         close = $("#vd-close"),  
@@ -239,6 +241,7 @@ function videoHandler() {
     }
 }
 
+//点击课程标题事件处理
 function courseHandler() {
      var bPct = $("#product"),
         oPct = $(".product"),
